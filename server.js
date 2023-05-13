@@ -6,6 +6,7 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
+
 const indexRouter = require("./routes/index");
 
 // set up view engine and use them
@@ -23,5 +24,6 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Mongoose"));
 
 // listen on port 3000 and set up routes
-app.listen(process.env.PORT || 3000);
 app.use("/", indexRouter);
+
+app.listen(process.env.PORT || 3000);
